@@ -29,7 +29,7 @@ Within each subfolder is an 'Embeddings' folder containing the weight matrix cor
 The three models implemented in our work are located under 'Sarcasm/Models/', they are:
 
  1. CNN baseline
- 2. ResMet baseline
+ 2. ResNet baseline
  3. DweNet baseline
  
 Each folder contains the source code of the final models, as well as a jupyter notebook for running each model.
