@@ -1,5 +1,12 @@
 ## A Deeper Look at Computational Sarcasm
 
+### Local Setup
+
+This work was done on an Ubuntu 18.04.3 system using a GeForce RTX2080 GPU for processing. 
+
+The following package versions were used: Python V3.7.1, Pytorch V1.0.1, Fastai V1.0.50, Cuda V10.1.105 and CuDNN V7.5.0
+                                          
+
 ### Data, Models and Results
 
 #### Datasets
@@ -25,7 +32,7 @@ The three models implemented in our work are located under 'Sarcasm/Models/', th
  2. ResMet baseline
  3. DweNet baseline
  
-Each folder contains the source code of the final models, as well as a jupyter notebook for running the models.
+Each folder contains the source code of the final models, as well as a jupyter notebook for running each model.
 
 #### Results
 
