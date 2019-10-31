@@ -1,0 +1,4 @@
+Words found: 22513
+Total words: 23439
+
+Coverage: 96.05%

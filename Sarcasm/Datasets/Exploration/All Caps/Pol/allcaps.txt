@@ -1,0 +1,7 @@
+nonsarcastic: 2656
+
+sarcastic: 2987
+
+All caps per NS =  0.3111
+
+All caps per S  = 0.3498

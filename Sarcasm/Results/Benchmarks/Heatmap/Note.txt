@@ -1,0 +1,8 @@
+Final_Heatmap_Data:
+
+Contains the L1 norm of the weights from each previous layer for each final block layer. 
+
+D1L4 indicates the 4th layer in the first dense block.
+C1-C4 indicate the 4 channels
+
+
