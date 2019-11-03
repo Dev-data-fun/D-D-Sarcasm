@@ -114,7 +114,6 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  The following change will need to be made to the jupyter notebook:
  
   1. Edit code cell 5 as such: <br/>
-  
   ```processor = [TokenizeProcessor(tokenizer=tokenizer), NumericalizeProcessor(min_freq=X)]```<br/>
   
    where X is the Min frequency embedding chosen
@@ -137,11 +136,9 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  To evaluate the effect of local context - provided in the form of parent comments on the Reddit Main dataset - set WEIGHTS to the Parent word embedding for the Reddit Main dataset located under: 'Sarcasm/Datasets/Reddit Main/Parent/Embeddings/glove/'. Then make the following changes to the jupyter notebook:
  
  1. Edit code cell 5 as such: <br/>
- 
  ```processor = [TokenizeProcessor(tokenizer=tokenizer, mark_fields=True), NumericalizeProcessor()]``` <br/>
  
  2. Edit code cell 6 as such: <br/>
- 
  ```data = (TextList.from_csv(DATASET_PATH, DATASET, cols=[COL, 'parent'], processor=processor))``` <br/>
  
    This will load the parent comment and concatenate it to the child comment, seperated by the 'xxfld' token.
@@ -152,7 +149,6 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
 ### Potential Issues
 
 If the model returns the following error: ```RuntimeError: cuda runtime error (59)```, it is likely caused by words in the vocabulary that are not present in the embedding (this can result from using a newer version of fastai). To fix this, save the vocab of the data once the learner has been instantiated as such:<br/>
-
 ```pickle.dump(data.vocab.itos, FILE.pkl)```<br/>
 
 Then download the desired embedding from its respective site, and build the weight matrix using the following:
