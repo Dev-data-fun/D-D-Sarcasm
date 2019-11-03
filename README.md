@@ -90,6 +90,8 @@ Instructions for runnning benchmarks and exploratory investigations in this work
 
 #### Benchmarks
 
+An online demonstration of the benchmark results is provided through the NextJournal platform here: https://nextjournal.com/djpelser/Benchmark_demo. Interested readers may make an account and 'Remix' the journal to run the demonstration themselves.
+
 To run the benchmark, open the jupyter notebook corresponding to the model you wish to run. 7 variables must be set:
 
  1. PADDING - 64 for Headlines dataset, 128 for Reddit Main and Reddit Pol
