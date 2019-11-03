@@ -59,11 +59,11 @@ def resLayer(inplanes, self_attention = False, bottle = False, leaky=None):
 
 class ResNet(nn.Module):
 
-    def __init__(self, weights_matrix, layers = (2, 2, 5, 5), inplanes = 16, bottle=False, zero_init_residual=False, dropout = 0, leaky = None, embed_dim = 50):
+    def __init__(self, weights_matrix, layers = (2, 2, 5, 5), inplanes = 16, bottle=False, zero_init_residual=False, dropout = 0, leaky = None, embed_dim = 50, static = False):
 
         super(ResNet, self).__init__()
 
-        self.embedding = create_embedding_layer(weights_matrix, False)
+        self.embedding = create_embedding_layer(weights_matrix, static)
         self.init_conv = L.conv1d(1, inplanes, ks=(3, embed_dim), stride=1, 
                                   padding=(1,0), bias=False)
         

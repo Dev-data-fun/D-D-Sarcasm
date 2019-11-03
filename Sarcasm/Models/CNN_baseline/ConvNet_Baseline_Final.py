@@ -41,11 +41,11 @@ def convBlock(inplanes, self_attention = False, leaky = None):
 class ConvNet(nn.Module):
 
     def __init__(self, weights_matrix, inplanes = 16, num_blocks = 4,
-                 self_attention = False, leaky=0.02, embed_dim = 50):
+                 self_attention = False, leaky=0.02, embed_dim = 50, static = False):
 
         super(ConvNet, self).__init__()
 
-        self.embedding = create_embedding_layer(weights_matrix, False)
+        self.embedding = create_embedding_layer(weights_matrix, static)
 
         self.init_conv = L.conv1d(1, inplanes, ks=(3, embed_dim), stride=1, padding=(1,0))
 
