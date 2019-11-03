@@ -113,14 +113,16 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  
  The following change will need to be made to the jupyter notebook:
  
-  1. Edit code cell 5 as such: 
-  ```processor = [TokenizeProcessor(tokenizer=tokenizer), NumericalizeProcessor(min_freq=X)]```
-     where X is the Min frequency embedding chosen
+  1. Edit code cell 5 as such: <br/>
+  
+  ```processor = [TokenizeProcessor(tokenizer=tokenizer), NumericalizeProcessor(min_freq=X)]```<br/>
+  
+   where X is the Min frequency embedding chosen
  
  To evalute the performance of the pre and postprocessing rules, make the following change to the jupyter notebook:
   
-  1. Edit code cell 5 as such: 
-  ```tokenizer = Tokenizer(SpacyTokenizer, 'en', pre_rules=[], post_rules=[])```
+  1. Edit code cell 5 as such: <br/>
+  ```tokenizer = Tokenizer(SpacyTokenizer, 'en', pre_rules=[], post_rules=[])```<br/>
  
  #### Embedding Investigation
  
@@ -134,23 +136,27 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  
  To evaluate the effect of local context - provided in the form of parent comments on the Reddit Main dataset - set WEIGHTS to the Parent word embedding for the Reddit Main dataset located under: 'Sarcasm/Datasets/Reddit Main/Parent/Embeddings/glove/'. Then make the following changes to the jupyter notebook:
  
- 1. Edit code cell 5 as such: 
- ```processor = [TokenizeProcessor(tokenizer=tokenizer, mark_fields=True), NumericalizeProcessor()]```
- 2. Edit code cell 6 as such: 
- ```data = (TextList.from_csv(DATASET_PATH, DATASET, cols=[COL, 'parent'], processor=processor))``` 
-    This will load the parent comment and concatenate it to the child comment, seperated by the 'xxfld' token.
+ 1. Edit code cell 5 as such: <br/>
+ 
+ ```processor = [TokenizeProcessor(tokenizer=tokenizer, mark_fields=True), NumericalizeProcessor()]``` <br/>
+ 
+ 2. Edit code cell 6 as such: <br/>
+ 
+ ```data = (TextList.from_csv(DATASET_PATH, DATASET, cols=[COL, 'parent'], processor=processor))``` <br/>
+ 
+   This will load the parent comment and concatenate it to the child comment, seperated by the 'xxfld' token.
  
 **Note:** Only the Reddit Main dataset is available for this investigation.
 
 
 ### Potential Issues
 
-If the model returns the following error: ```RuntimeError: cuda runtime error (59)```, it is likely caused by words in the vocabulary that are not present in the embedding (this can result from using a newer version of fastai). To fix this, save the vocab of the data once the learner has been instantiated as such:
+If the model returns the following error: ```RuntimeError: cuda runtime error (59)```, it is likely caused by words in the vocabulary that are not present in the embedding (this can result from using a newer version of fastai). To fix this, save the vocab of the data once the learner has been instantiated as such:<br/>
 
-```pickle.dump(data.vocab.itos, FILE.pkl)```
+```pickle.dump(data.vocab.itos, FILE.pkl)```<br/>
 
 Then download the desired embedding from its respective site, and build the weight matrix using the following:
-
+<br/>
 ```
 itos = PATH   #path to itos vocab file saved above
 weights_matrix = np.zeros((len(itos), EMBED_DIM))
@@ -170,6 +176,6 @@ def gather(emb_dict):
             words_found += 1
         except KeyError:
             weights_matrix[i] = np.random.normal(scale=0.6, size=(EMBED_DIM,))
-```
+```<br/>
 
 Then pass the embedding file to the 'gather' function and save the resulting 'weights_matrix' object.
