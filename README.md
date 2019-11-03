@@ -149,26 +149,22 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
 ### Potential Issues
 
 If the model returns the following error: ```RuntimeError: cuda runtime error (59)```, it is likely caused by words in the vocabulary that are not present in the embedding (this can result from using a newer version of fastai). To fix this, save the vocab of the data once the learner has been instantiated as such:<br/>
-```pickle.dump(data.vocab.itos, FILE.pkl)```<br/>
+```pickle.dump(data.vocab.itos, open('path/to/file/filename.pkl', 'wb'))```<br/>
 
 Then download the desired embedding from its respective site, and build the weight matrix using the following:
 <br/>
 ```itos = PATH   #path to itos vocab file saved above
 weights_matrix = np.zeros((len(itos), EMBED_DIM))
-words_found = 0
 
 def gather(emb_dict):
 
-    global words_found
     global weights_matrix
-    global unknown_words
 
     for i, word in tqdm(enumerate(itos)):
         if i==1:
             continue       # We skip the <pad> token, leaving it to be zeros
         try:
             weights_matrix[i] = list(emb_dict[word])
-            words_found += 1
         except KeyError:
             weights_matrix[i] = np.random.normal(scale=0.6, size=(EMBED_DIM,)) 
  ```
