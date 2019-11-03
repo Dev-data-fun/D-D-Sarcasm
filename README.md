@@ -153,8 +153,7 @@ If the model returns the following error: ```RuntimeError: cuda runtime error (5
 
 Then download the desired embedding from its respective site, and build the weight matrix using the following:
 <br/>
-```
-itos = PATH   #path to itos vocab file saved above
+```itos = PATH   #path to itos vocab file saved above
 weights_matrix = np.zeros((len(itos), EMBED_DIM))
 words_found = 0
 
@@ -171,7 +170,7 @@ def gather(emb_dict):
             weights_matrix[i] = list(emb_dict[word])
             words_found += 1
         except KeyError:
-            weights_matrix[i] = np.random.normal(scale=0.6, size=(EMBED_DIM,))
-```<br/>
-
+            weights_matrix[i] = np.random.normal(scale=0.6, size=(EMBED_DIM,)) 
+ ```
+            
 Then pass the embedding file to the 'gather' function and save the resulting 'weights_matrix' object.
