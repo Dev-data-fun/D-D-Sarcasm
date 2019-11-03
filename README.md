@@ -114,13 +114,13 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  The following change will need to be made to the jupyter notebook:
  
   1. Edit code cell 5 as such: 
-  ```python processor = [TokenizeProcessor(tokenizer=tokenizer), NumericalizeProcessor(min_freq=X)]```
+  ```processor = [TokenizeProcessor(tokenizer=tokenizer), NumericalizeProcessor(min_freq=X)]```
      where X is the Min frequency embedding chosen
  
  To evalute the performance of the pre and postprocessing rules, make the following change to the jupyter notebook:
   
   1. Edit code cell 5 as such: 
-  ```python tokenizer = Tokenizer(SpacyTokenizer, 'en', pre_rules=[], post_rules=[])```
+  ```tokenizer = Tokenizer(SpacyTokenizer, 'en', pre_rules=[], post_rules=[])```
  
  #### Embedding Investigation
  
@@ -135,9 +135,9 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  To evaluate the effect of local context - provided in the form of parent comments on the Reddit Main dataset - set WEIGHTS to the Parent word embedding for the Reddit Main dataset located under: 'Sarcasm/Datasets/Reddit Main/Parent/Embeddings/glove/'. Then make the following changes to the jupyter notebook:
  
  1. Edit code cell 5 as such: 
- ```python processor = [TokenizeProcessor(tokenizer=tokenizer, mark_fields=True), NumericalizeProcessor()]```
+ ```processor = [TokenizeProcessor(tokenizer=tokenizer, mark_fields=True), NumericalizeProcessor()]```
  2. Edit code cell 6 as such: 
- ```python data = (TextList.from_csv(DATASET_PATH, DATASET, cols=[COL, 'parent'], processor=processor))``` 
+ ```data = (TextList.from_csv(DATASET_PATH, DATASET, cols=[COL, 'parent'], processor=processor))``` 
     This will load the parent comment and concatenate it to the child comment, seperated by the 'xxfld' token.
  
 **Note:** Only the Reddit Main dataset is available for this investigation.
@@ -147,12 +147,11 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
 
 If the model returns the following error: ```RuntimeError: cuda runtime error (59)```, it is likely caused by words in the vocabulary that are not present in the embedding (this can result from using a newer version of fastai). To fix this, save the vocab of the data once the learner has been instantiated as such:
 
-```python pickle.dump(data.vocab.itos, FILE.pkl)```
+```pickle.dump(data.vocab.itos, FILE.pkl)```
 
 Then download the desired embedding from its respective site, and build the weight matrix using the following:
 
-```python 
-
+```
 itos = PATH   #path to itos vocab file saved above
 weights_matrix = np.zeros((len(itos), EMBED_DIM))
 words_found = 0
