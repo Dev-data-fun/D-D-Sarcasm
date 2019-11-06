@@ -109,7 +109,7 @@ To run the benchmark, open the jupyter notebook corresponding to the model you w
  To compare benchmark techniques use the embeddings located under 'Sarcasm/Results/Data Preprocessing Investigation/'. The following 2 options are available:
  
   1. Min 1 - Headlines word embedding for a word threshold of 1
-  2. Min 2 - Headlines word embedding for a word threshold of 1
+  2. Min 2 - Headlines word embedding for a word threshold of 2
   
  **Note:** Only the Headlines dataset is available for this investigation. To use the default preprocessing simply load the standard Headlines embedding.
  
