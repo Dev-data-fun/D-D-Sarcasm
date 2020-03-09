@@ -1,5 +1,9 @@
 ## A Deeper Look at Computational Sarcasm
 
+The thesis pdf is currently unavailable due to University rules, but will be uploaded once I am allowed.
+
+Arxiv paper from thesis: https://arxiv.org/abs/1911.07474
+
 ### Local Setup
 
 This work was done on an Ubuntu 18.04.3 system using a GeForce RTX2080 GPU for processing. 
