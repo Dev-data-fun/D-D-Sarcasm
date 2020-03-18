@@ -1,6 +1,6 @@
 ## A Deeper Look at Computational Sarcasm
 
-The thesis pdf is currently unavailable due to University rules, but will be uploaded once I am allowed.
+[Thesis pdf](MScThesis.pdf) 
 
 Arxiv paper from thesis: https://arxiv.org/abs/1911.07474
 
